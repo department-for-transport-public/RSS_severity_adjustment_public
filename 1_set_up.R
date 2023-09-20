@@ -169,13 +169,21 @@ DB <- DB %>%
 
 ## read in data set that has c8crash, accident_index, accident_year, vehicle_reference, casualty_reference
 
-## SPECIFY FOLDER 
 
-#Specify a folder which will contain all the input data required 
-#This code assumes that input data will be loaded from flat files rather than (e.g.) directly from databases
 
-folder_in <-  "~/g/AFP/RLTDAll/STS/007 ROAD SAFETY STATISTICS/002 PUBLICATION/0003 Reported Road Casualties Great Britain/RRCGB22/Severity_adjustment/Public_2021_run/"
-folder_out <- "~/g/AFP/RLTDAll/STS/007 ROAD SAFETY STATISTICS/002 PUBLICATION/0003 Reported Road Casualties Great Britain/RRCGB22/Severity_adjustment/Public_2021_run/"
+################################################################################
+##Specify output folder
+#This is where the outputted data from the modelling will be save
+
+
+data_year <- 2021
+
+folder_out <- 
+  file.path(
+    "Public_SA_output",
+    fsep = "/"
+  )
+
 data_year <- 2021
 
 ################################################################################
