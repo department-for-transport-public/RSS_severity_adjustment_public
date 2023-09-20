@@ -1,10 +1,13 @@
 ################################################################################
-## FINAL REGRESSION AND CALCULATION OF PROBABILITIES
-################################################################################   
+# STATS19 SERVERITY ADJUSTMENT: ANALYSIS - FINAL REGRESSION AND CALCULATION OF PROBABILITIES
+################################################################################
 
-## This script to set the median police force
+## This script to set the median police force (see otuput from 3a_analysis_find_median.R)
 ## Then run the final regression
 ## Finally use the regression outputs to calculate the probabilities needed for the severity adjustments
+
+################################################################################   
+## Get the read from the output folder
 
 df<- readr::read_rds(paste0(folder_out,"df.RDS"))
 
@@ -31,7 +34,6 @@ df[, PFCdiff2 := relevel(as.factor(PFCdiff2), ref="Other")]
 
 
 ################################################################################   
-
 ##  Regression 2 - produce adjustments
 
 f <- as.formula(paste('Severe ~ C16SUMLAB + VM + VLC + Skid + Impact + 
@@ -55,6 +57,9 @@ sink()
 sink("odds2.txt")
 print(exp(coef(Bmodel)))
 sink()
+
+################################################################################
+## Save data [MT: some inefficiency here - as basically the same as previous file]
 
 readr::write_rds(Bmodel,paste0(folder_out,"Bmodel.RDS")) #this is a big file, may not be essential to save it
 
