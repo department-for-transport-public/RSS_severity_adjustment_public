@@ -35,6 +35,19 @@ VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/d
 
 ################################################################################
 ## Reading in road safety data
+## For data security purposes, a dummy of the STAT!9 variables required for severity adjustment code is provided
+## This dummy input folder can be loaded from the repo 'Data' folder as below
+## For request the full C-Ind varaible dataset (including the c8crash variable), contact the road safety stats team
+
+#Specify a folder which will contain all the input data required 
+#This code assumes that input data will be loaded from flat files rather than (e.g.) directly from databases
+folder <- 
+  file.path(
+    "Data",
+    fsep = "/"
+  )
+
+
 ## NOTE: Need to contact road safety stats team for C-Ind variable dataset - this requires requesting the c8crash variable 
 
 con <- DBI::dbConnect(odbc::odbc(), 
