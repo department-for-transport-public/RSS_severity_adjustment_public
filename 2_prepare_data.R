@@ -1,13 +1,19 @@
-################################################################################   
+################################################################################
+# STATS19 SERVERITY ADJUSTMENT: PEPRARING THE DATA
+################################################################################
 
+## This scripts cleans the DB data file into a format helpful for the later modelling and interpretation 
+## The cleaned is then saved data is also saved in the output folder
+
+################################################################################ 
 ## Data cleaning - police force / CRASH indicator
 
+# Actions include:
 # Amend the indicator for CRASH data 
 # Set to 1 for Met Police (using COPA, rather than CRASH)
 # Use difference in days as flag, where there is a difference after 01/11/2016 (when COPA introduced)
 # Where PF is Met and diff in days is 0 or more (i.e. after 01/11/2016) make COPA true, and set CRASH indicator to 1
 # Make all data for Kent from Jan 2016 onwards, as not all data correctly classed as CRASH in STATS19
-
 # Make variables factors for the model, and set the reference force as Herts (as initially chosen by ONS)
 
 DB <- DB %>%
@@ -61,12 +67,9 @@ DB <- DB %>%
 
 
 #######################################################################################
+## Model preparation - casualty and driver age and sex
 
-## Model preparation
-
-# This section to recode / re-reference variables for speed of running and ease of model interpretation
-
-# Casualty and driver age and sex
+#This section to recode / re-reference variables for speed of running and ease of model interpretation
 
 DB <- DB %>%
   dplyr::mutate(#Recode Casualty_Severity to Severe (TRUE or FALSE)
@@ -114,7 +117,9 @@ DB <- DB %>%
                 Sex_of_Driver = relevel(as.factor(Sex_of_Driver), ref="1"),
                 DvrSex = car::recode(Sex_of_Driver,"-1=3; 0=3"))
 
-# Months and seasons
+
+#######################################################################################
+## Model preparation - months and seasons
 # These variables allow a time effect on P(serious) to vary smoothly from year to year and avoid using year as a factor 
 
 DB <- DB %>%
@@ -137,7 +142,9 @@ DB <- DB %>%
   SinTim = sinpi((TimeHrN+0.5-8)/12),
   Sin2Tim = sinpi((TimeHrN+0.5-8)/6)) 
 
-# Casualty type
+
+#######################################################################################
+## Model preparation - Casualty type
 
 DB <- DB %>%
   # Make car occupant the reference category
@@ -195,7 +202,9 @@ DB <- DB %>%  dplyr::mutate(
                                     "c(0,2,3)='a Leaving Junc'; 8='b Mid Junc';
                                     c(-1,1,4,5,6,7,9)='c Entering Junc / missing'"))
 
-# Vehicle variables
+
+#######################################################################################
+## Model preparation - Vehicle variables
 
 DB <- DB %>%
   # Vehicle_Leaving_Carriageway - make cat 0 (didnt) the reference 
@@ -237,7 +246,9 @@ DB <- DB %>%
                 CRef = car::recode(Casualty_Reference,
                                    "c(1)='a first'; c(2)='b second'; else='c other'"))
 
-# Further casualty variables
+
+#######################################################################################
+## Model preparation - Further casualty variables
 
 DB <- DB %>%
   dplyr::mutate(
@@ -249,6 +260,9 @@ DB <- DB %>%
     BusS = car::recode(Bus_or_Coach_Passenger,
                        "c(-1,0,9)='a No or missing';c(1,2,3)='b not seated';
                        4='c seated'"))
+
+
+
 
 ################################################################################   
 
