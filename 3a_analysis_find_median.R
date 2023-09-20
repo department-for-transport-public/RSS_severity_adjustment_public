@@ -1,15 +1,18 @@
 ################################################################################
-## FIND MEDIAN POLICE FORCE
-################################################################################      
+# STATS19 SERVERITY ADJUSTMENT: ANALYSIS - FIND MEDIAN POLICE FORCE
+################################################################################
 
 ## This code carries out the regression analysis to get the coefficients from which the median police force is determined
+## The code read in data frame for model from the ouput folder (created by previous 2_prepare_data.R code)
 
-## Read in data frame for model (created by previous code)
+
+################################################################################      
+## Get the read from the output folder
 
 df <- readr::read_rds(paste0(folder_out,"df.RDS"))
 
-################################################################################
 
+################################################################################
 ## Regression to find median police force
 
 ### These are the list of explanatory variables
@@ -45,8 +48,8 @@ sink("odds.txt")
 print(exp(coef(Bmodel)))
 sink()
 
-################################################################################
 
+################################################################################
 ## Save data [MT: some inefficiency here - as basically the same as previous file]
 
 # Clean environment
