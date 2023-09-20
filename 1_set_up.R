@@ -7,6 +7,7 @@
 
 ################################################################################
 ## Libraries and setup
+## If these pacakges are not already installed, first do install.packages("PACKAGE_NAME")
 
 library(DBI) #connect to SQL
 library(odbc) #connect to SQL
@@ -34,10 +35,7 @@ VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/d
 
 
 ################################################################################
-## Reading in road safety data
-## For data security purposes, a dummy of the STAT!9 variables required for severity adjustment code is provided
-## This dummy input folder can be loaded from the repo 'Data' folder as below
-## For request the full C-Ind varaible dataset (including the c8crash variable), contact the road safety stats team
+## Reading in road safety data CRASH data
 
 #Specify a folder which will contain all the input data required 
 #This code assumes that input data will be loaded from flat files rather than (e.g.) directly from databases
@@ -48,42 +46,33 @@ folder <-
   )
 
 
-## NOTE: Need to contact road safety stats team for C-Ind variable dataset - this requires requesting the c8crash variable 
+#Load the c8 crash data
+#This datafile provides details as whether the relevant force was on the CRASH system when/where the collision occurred
+c8crash <- read.csv(paste(folder, "/RSS_c8crash_data.csv", sep=""))
 
-con <- DBI::dbConnect(odbc::odbc(), 
-                      .connection_string = "driver={ODBC Driver 17 for SQL Server};
-                             Trusted_Connection=yes;
-                             server=GCP-TS01; 
-                             database=RAS_Statistics")
 
-c8crash <- dbGetQuery(con,
-                      paste0("select
-                        [accident_index],[accyr],[accref],[vehref],[casref],[c8crash]
-                     FROM cas
-                     WHERE accyr between 2004 and 2021")) %>%
-  dplyr::mutate(C_Ind = ifelse(c8crash==-1 , 0, 1))
+
+################################################################################   
+## Combine datasets (to produce 'DB', the one master data file)
 
 CasDB <- CasDB %>%
   left_join(c8crash, by = c("accident_index", "vehicle_reference" = "vehref", "casualty_reference" = "casref"))
 
-################################################################################   
-
-## Combine datasets (to produce 'DB', the one master data file)
-
 DB <- CasDB %>%
   dplyr::left_join(AccDB, by = c("accident_reference", "accident_year")) %>%
   dplyr::left_join(VehDB, by =  c("accident_year", "vehicle_reference", "accident_reference")) 
-#rm(AccDB, CasDB, VehDB)
+
+
 
 ################################################################################   
-
 ## Data cleaning - misc.
+## This section relabels and recode into a format helpful for the later modelling and interpretation 
 
 # Make all NAs -1 like ONS method
 DB[is.na(DB)] <- -1
 
 
-# Rename variables so they are the same as ONS list - also easier to interpret than STATS19 naming
+# Rename variables so they are the same as ONS list to ease interpretation
 DB <- DB %>%
   dplyr::select("accid" = "accident_index",
                 "accyr" = "accident_year",
