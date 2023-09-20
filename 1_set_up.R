@@ -1,4 +1,11 @@
 ################################################################################
+# STATS19 SERVERITY ADJUSTMENT: SETUP
+################################################################################
+
+## This initial script loads required libraries and specifies folder and file names where data files are located
+## A number of pre-specified lookups are loaded in from web-based CSV files
+
+################################################################################
 ## Libraries and setup
 
 library(DBI) #connect to SQL
@@ -9,21 +16,26 @@ library(readr) #import data
 library(pROC) #for ROC curve (in analysis section)
 library(data.table)
 
-## reading in data from website
 
-AccDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-accident-1979-2021.csv")
-CasDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-1979-2021.csv")
-VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-1979-2021.csv")
+################################################################################
+## Reading in data from website (filter for 2004 onwards)
 
-CasDB <- CasDB %>% 
-  dplyr::filter(accident_year >= 2004)
-AccDB <- AccDB %>% 
-  dplyr::filter(accident_year >= 2004)
-VehDB <- VehDB %>% 
+#accident data
+AccDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-accident-1979-2021.csv") %>% 
   dplyr::filter(accident_year >= 2004)
 
+#casualty data
+CasDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-1979-2021.csv") %>% 
+  dplyr::filter(accident_year >= 2004)
 
-### Need to contact road safety stats team for C-Ind variable dataset - this requires requesting the c8crash variable 
+#vehicle data
+VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-1979-2021.csv") %>% 
+  dplyr::filter(accident_year >= 2004)
+
+
+################################################################################
+## Reading in road safety data
+## NOTE: Need to contact road safety stats team for C-Ind variable dataset - this requires requesting the c8crash variable 
 
 con <- DBI::dbConnect(odbc::odbc(), 
                       .connection_string = "driver={ODBC Driver 17 for SQL Server};
