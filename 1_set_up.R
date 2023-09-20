@@ -175,14 +175,10 @@ DB <- DB %>%
 ##Specify output folder
 #This is where the outputted data from the modelling will be save
 
-
-data_year <- 2021
-
 folder_out <- 
   file.path(
     "Public_SA_output",
     fsep = "/"
   )
 
-data_year <- 2021   ##Move this to the top?!
 
