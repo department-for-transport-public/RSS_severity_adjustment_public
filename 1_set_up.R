@@ -184,17 +184,5 @@ folder_out <-
     fsep = "/"
   )
 
-data_year <- 2021
+data_year <- 2021   ##Move this to the top?!
 
-################################################################################
-
-
-
-## SPECIFY DATA FILENAMES
-
-#These input files should all be located within the Data folder (unless otherwise specified)
-#Within this project, sample/dummy files have been loaded to show the format of the data - these should allow the code to run but will not produce meaningful results
-
-# cas_data <- paste0("Cas_2004_", data_year, ".csv")
-# acc_data <- paste0("Acc_2004_", data_year, ".csv") 
-# veh_data <- paste0("Veh_2004_", data_year, ".csv")
