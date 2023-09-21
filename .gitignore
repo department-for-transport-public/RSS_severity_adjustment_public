@@ -39,8 +39,9 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-##Data and output folders
-#Data/
+##Data folders (except csv files)
+data/
+!data/RSS_c8crash_data.csv
 Outputs/
 
 # Common data filetypes
