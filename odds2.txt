@@ -1,0 +1,118 @@
+                       (Intercept)              C16SUMLABBus Occupant              C16SUMLABHGV Occupant             C16SUMLABMotor Cyclist 
+                        0.07999627                         1.07548502                         1.44125604                         6.62365757 
+       C16SUMLABOther Veh Occupant             C16SUMLABPedal Cyclist                C16SUMLABPedestrian              C16SUMLABVan Occupant 
+                        3.10633978                         5.31089959                         5.97369919                         1.08353044 
+                            VMbend                           VMparked                             VMslow               VMstationary slowing 
+                        1.10320570                         0.92996788                         0.83166946                         0.53348169 
+                          VLCother                     VLCst or cross                          Skidother                         Impactnone 
+                        1.46401445                         1.89451119                         1.15154831                         0.94790854 
+                        Impactrear                         Impactside                            Speed20                            Speed40 
+                        0.54806627                         0.85965098                         0.92536751                         1.34426065 
+                           Speed50                            Speed60                            Speed70                        HitOffother 
+                        1.57748140                         1.77501206                         1.51083339                         1.00920201 
+                    HitOfftree etc                         HitInother                   HitInsubstantial                   BusSb not seated 
+                        1.46991701                         1.07592462                         1.23725395                         2.32455540 
+                      BusSc seated                     WeatherSb Rain                     WeatherSc Snow            WeatherSd missing/other 
+                        0.77850218                         0.88479614                         0.88593610                         0.92152943 
+                     WeatherSe fog                     RdTypeSb Other                     X1RoadSb Other                     X2RoadSb Major 
+                        0.94586191                         0.85835551                         1.27136645                         0.93488376 
+                    X2RoadSc Minor                   SpecialCSb other                     RoadSurfSb Wet                    RoadSurfSc Snow 
+                        0.99293148                         0.88306658                         0.99766628                         0.74444946 
+        RoadSurfSd other / missing            PedLocSb Carriageway DK                  PedLocSc Footpath                   JdetailSb T Junc 
+                        0.78226199                         0.91938674                         0.64727476                         0.91883812 
+                   JdetailSc other                  JdetailSd slip rd               JdetailSe roundabout                            DvrSex2 
+                        0.87626157                         0.88512876                         0.76440711                         0.88824610 
+                           DvrSex3                    DvrAgeBdb 16-25                      DvrAgeBdc 66+                  DvrAgeBdd missing 
+                        0.87931358                         1.05636483                         0.92881406                         0.87763160 
+                  JnyPurpSb school                    JnyPurpSc other                 TimeZoneCommute pm                      TimeZoneearly 
+                        0.85574952                         1.13475597                         1.04720332                         1.17238873 
+                   TimeZoneevening                       TimeZonelate              TimeZoneMiddle of day                             CosTim 
+                        1.08787691                         0.99877698                         1.00802544                         0.96806704 
+                           Cos2Tim                             SinTim                            Sin2Tim                              YearN 
+                        0.89098080                         0.73791476                         0.97212720                         1.02950916 
+          PFlabelAvon and Somerset                PFlabelBedfordshire              PFlabelCambridgeshire                    PFlabelCheshire 
+                        1.00238433                         0.95479815                         1.18740527                         1.50149043 
+             PFlabelCity of London                   PFlabelCleveland                     PFlabelCumbria                  PFlabelDerbyshire 
+                        0.95185659                         1.69761371                         1.28031748                         1.47989219 
+         PFlabelDevon and Cornwall                      PFlabelDorset                      PFlabelDurham                 PFlabelDyfed-Powys 
+                        0.85533437                         1.56714827                         1.52960541                         1.76462211 
+                      PFlabelEssex             PFlabelGloucestershire          PFlabelGreater Manchester                       PFlabelGwent 
+                        1.78440793                         1.44075772                         1.81456568                         2.07602012 
+                  PFlabelHampshire                  PFlabelHumberside                        PFlabelKent                  PFlabelLancashire 
+                        2.01149626                         1.25690007                         1.10878615                         1.96869747 
+             PFlabelLeicestershire                PFlabelLincolnshire                  PFlabelMerseyside         PFlabelMetropolitan Police 
+                        1.32723535                         1.43473411                         1.86578126                         0.82521960 
+                    PFlabelNorfolk                 PFlabelNorth Wales             PFlabelNorth Yorkshire            PFlabelNorthamptonshire 
+                        1.16385206                         2.05557663                         1.44371251                         2.39558597 
+                PFlabelNorthumbria             PFlabelNottinghamshire             PFlabelPolice Scotland                 PFlabelSouth Wales 
+                        1.46878697                         1.58441435                         2.57417600                         1.05223504 
+            PFlabelSouth Yorkshire               PFlabelStaffordshire                     PFlabelSuffolk                      PFlabelSurrey 
+                        1.87166377                         1.02339344                         1.07762179                         0.94857941 
+                     PFlabelSussex               PFlabelThames Valley                PFlabelWarwickshire                 PFlabelWest Mercia 
+                        1.31361846                         1.47026923                         1.31285748                         1.17969821 
+              PFlabelWest Midlands              PFlabelWest Yorkshire                   PFlabelWiltshire                             YearN2 
+                        1.13937459                         1.55538779                         1.34675745                         1.00186721 
+                          POattend                       VRefb second                        VRefc other                       CRefb second 
+                        0.51734162                         0.85016087                         0.66800604                         0.89395116 
+                       CRefc other             Age_Band_of_Casualty-1              Age_Band_of_Casualty1              Age_Band_of_Casualty2 
+                        0.84445891                         0.86020882                         0.82608023                         0.80054244 
+             Age_Band_of_Casualty3              Age_Band_of_Casualty4              Age_Band_of_Casualty5              Age_Band_of_Casualty7 
+                        0.92490400                         0.81805184                         0.91462807                         1.04537867 
+             Age_Band_of_Casualty8              Age_Band_of_Casualty9             Age_Band_of_Casualty10             Age_Band_of_Casualty11 
+                        1.10018436                         1.15221352                         1.28819316                         1.33544052 
+                          CasAgeN2                   Sex_of_Casualty2                   Sex_of_Casualty3                       NofVsGroupxx 
+                        1.00021358                         0.94110549                         0.44061803                         0.97652520 
+                    NofVsGroupxxx+                       NofCsGroupxx                     NofCsGroupxxx+                            online1 
+                        1.19798902                         1.10841639                         1.55251781                         1.00802672 
+                            C_Ind1        C16SUMLABBus Occupant:YearN        C16SUMLABHGV Occupant:YearN       C16SUMLABMotor Cyclist:YearN 
+                        1.63002315                         1.02473675                         1.00342581                         1.00854275 
+ C16SUMLABOther Veh Occupant:YearN       C16SUMLABPedal Cyclist:YearN          C16SUMLABPedestrian:YearN        C16SUMLABVan Occupant:YearN 
+                        1.03687629                         1.01911175                         1.00473451                         0.99860705 
+    YearN:PFlabelAvon and Somerset          YearN:PFlabelBedfordshire        YearN:PFlabelCambridgeshire              YearN:PFlabelCheshire 
+                        0.97723011                         1.00553843                         1.00112056                         0.98145266 
+       YearN:PFlabelCity of London             YearN:PFlabelCleveland               YearN:PFlabelCumbria            YearN:PFlabelDerbyshire 
+                        1.01205294                         1.00259440                         0.96978576                         0.99775731 
+   YearN:PFlabelDevon and Cornwall                YearN:PFlabelDorset                YearN:PFlabelDurham           YearN:PFlabelDyfed-Powys 
+                        1.04696730                         0.99916572                         1.04614258                         1.00937013 
+                YearN:PFlabelEssex       YearN:PFlabelGloucestershire    YearN:PFlabelGreater Manchester                 YearN:PFlabelGwent 
+                        0.97711206                         1.07620187                         1.03338166                         1.03870877 
+            YearN:PFlabelHampshire            YearN:PFlabelHumberside                  YearN:PFlabelKent            YearN:PFlabelLancashire 
+                        1.02272067                         0.96446451                         0.98146815                         0.99539838 
+       YearN:PFlabelLeicestershire          YearN:PFlabelLincolnshire            YearN:PFlabelMerseyside   YearN:PFlabelMetropolitan Police 
+                        1.03206419                         1.03356177                         1.01068881                         0.93193760 
+              YearN:PFlabelNorfolk           YearN:PFlabelNorth Wales       YearN:PFlabelNorth Yorkshire      YearN:PFlabelNorthamptonshire 
+                        1.00841407                         1.05492876                         0.96473767                         0.99710988 
+          YearN:PFlabelNorthumbria       YearN:PFlabelNottinghamshire       YearN:PFlabelPolice Scotland           YearN:PFlabelSouth Wales 
+                        1.01532172                         0.98092268                         0.99713992                         0.99592505 
+      YearN:PFlabelSouth Yorkshire         YearN:PFlabelStaffordshire               YearN:PFlabelSuffolk                YearN:PFlabelSurrey 
+                        0.97061681                         0.98702517                         0.99061830                         1.04993958 
+               YearN:PFlabelSussex         YearN:PFlabelThames Valley          YearN:PFlabelWarwickshire           YearN:PFlabelWest Mercia 
+                        1.02022915                         1.01045017                         0.97201528                         0.98465107 
+        YearN:PFlabelWest Midlands        YearN:PFlabelWest Yorkshire             YearN:PFlabelWiltshire        C_Ind0:PFCdiff2Bedfordshire 
+                        1.01594040                         1.01427149                         0.98627471                         1.44898627 
+       C_Ind1:PFCdiff2Bedfordshire      C_Ind0:PFCdiff2Cambridgeshire      C_Ind1:PFCdiff2Cambridgeshire      C_Ind0:PFCdiff2City of London 
+                                NA                         1.23182456                                 NA                         1.22431027 
+     C_Ind1:PFCdiff2City of London             C_Ind0:PFCdiff2Cumbria             C_Ind1:PFCdiff2Cumbria  C_Ind0:PFCdiff2Devon and Cornwall 
+                                NA                         0.82703460                                 NA                         1.50892867 
+ C_Ind1:PFCdiff2Devon and Cornwall              C_Ind0:PFCdiff2Durham              C_Ind1:PFCdiff2Durham               C_Ind0:PFCdiff2Essex 
+                                NA                         1.13396650                                 NA                         0.86500508 
+              C_Ind1:PFCdiff2Essex     C_Ind0:PFCdiff2Gloucestershire     C_Ind1:PFCdiff2Gloucestershire  C_Ind0:PFCdiff2Greater Manchester 
+                                NA                         1.71868825                                 NA                         0.88481182 
+ C_Ind1:PFCdiff2Greater Manchester       C_Ind0:PFCdiff2Hertfordshire       C_Ind1:PFCdiff2Hertfordshire          C_Ind0:PFCdiff2Humberside 
+                                NA                         1.31475897                                 NA                         1.07667606 
+         C_Ind1:PFCdiff2Humberside                C_Ind0:PFCdiff2Kent                C_Ind1:PFCdiff2Kent          C_Ind0:PFCdiff2Lancashire 
+                                NA                         0.89360036                                 NA                         0.80700256 
+         C_Ind1:PFCdiff2Lancashire C_Ind0:PFCdiff2Metropolitan Police C_Ind1:PFCdiff2Metropolitan Police             C_Ind0:PFCdiff2Norfolk 
+                                NA                         0.82228022                                 NA                         1.27651497 
+            C_Ind1:PFCdiff2Norfolk         C_Ind0:PFCdiff2Northumbria         C_Ind1:PFCdiff2Northumbria     C_Ind0:PFCdiff2Police Scotland 
+                                NA                         0.95964348                                 NA                         0.69226311 
+    C_Ind1:PFCdiff2Police Scotland     C_Ind0:PFCdiff2South Yorkshire     C_Ind1:PFCdiff2South Yorkshire       C_Ind0:PFCdiff2Staffordshire 
+                                NA                         0.59497927                                 NA                         0.65301983 
+      C_Ind1:PFCdiff2Staffordshire             C_Ind0:PFCdiff2Suffolk             C_Ind1:PFCdiff2Suffolk              C_Ind0:PFCdiff2Surrey 
+                                NA                         1.13476599                                 NA                         1.70362925 
+             C_Ind1:PFCdiff2Surrey              C_Ind0:PFCdiff2Sussex              C_Ind1:PFCdiff2Sussex         C_Ind0:PFCdiff2West Mercia 
+                                NA                         1.56064491                                 NA                         0.97973816 
+        C_Ind1:PFCdiff2West Mercia       C_Ind0:PFCdiff2West Midlands       C_Ind1:PFCdiff2West Midlands      C_Ind0:PFCdiff2West Yorkshire 
+                                NA                         1.52531366                                 NA                         1.02535547 
+     C_Ind1:PFCdiff2West Yorkshire 
+                                NA 

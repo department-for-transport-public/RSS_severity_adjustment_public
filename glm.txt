@@ -1,0 +1,222 @@
+
+Call:
+glm(formula = f, family = binomial, data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.2145  -0.5551  -0.3650  -0.2088   3.7363  
+
+Coefficients: (25 not defined because of singularities)
+                                     Estimate Std. Error  z value Pr(>|z|)    
+(Intercept)                        -2.526e+00  6.482e-02  -38.968  < 2e-16 ***
+C16SUMLABBus Occupant               7.277e-02  4.166e-02    1.747 0.080675 .  
+C16SUMLABHGV Occupant               3.655e-01  2.708e-02   13.498  < 2e-16 ***
+C16SUMLABMotor Cyclist              1.891e+00  7.170e-03  263.685  < 2e-16 ***
+C16SUMLABOther Veh Occupant         1.133e+00  2.068e-02   54.811  < 2e-16 ***
+C16SUMLABPedal Cyclist              1.670e+00  7.839e-03  213.017  < 2e-16 ***
+C16SUMLABPedestrian                 1.787e+00  8.986e-03  198.905  < 2e-16 ***
+C16SUMLABVan Occupant               8.022e-02  1.593e-02    5.036 4.75e-07 ***
+VMbend                              9.822e-02  5.683e-03   17.283  < 2e-16 ***
+VMparked                           -7.261e-02  1.876e-02   -3.870 0.000109 ***
+VMslow                             -1.843e-01  5.479e-03  -33.641  < 2e-16 ***
+VMstationary slowing               -6.283e-01  8.150e-03  -77.095  < 2e-16 ***
+VLCother                            3.812e-01  6.770e-03   56.305  < 2e-16 ***
+VLCst or cross                      6.390e-01  1.765e-02   36.205  < 2e-16 ***
+Skidother                           1.411e-01  4.765e-03   29.614  < 2e-16 ***
+Impactnone                         -5.350e-02  8.648e-03   -6.186 6.18e-10 ***
+Impactrear                         -6.014e-01  7.292e-03  -82.470  < 2e-16 ***
+Impactside                         -1.512e-01  4.015e-03  -37.664  < 2e-16 ***
+Speed20                            -7.756e-02  1.067e-02   -7.267 3.69e-13 ***
+Speed40                             2.958e-01  6.569e-03   45.033  < 2e-16 ***
+Speed50                             4.558e-01  9.349e-03   48.757  < 2e-16 ***
+Speed60                             5.738e-01  5.499e-03  104.346  < 2e-16 ***
+Speed70                             4.127e-01  9.643e-03   42.792  < 2e-16 ***
+HitOffother                         9.160e-03  7.842e-03    1.168 0.242785    
+HitOfftree etc                      3.852e-01  9.613e-03   40.070  < 2e-16 ***
+HitInother                          7.318e-02  7.840e-03    9.334  < 2e-16 ***
+HitInsubstantial                    2.129e-01  1.237e-02   17.205  < 2e-16 ***
+BusSb not seated                    8.435e-01  4.383e-02   19.246  < 2e-16 ***
+BusSc seated                       -2.504e-01  4.359e-02   -5.744 9.27e-09 ***
+WeatherSb Rain                     -1.224e-01  6.470e-03  -18.918  < 2e-16 ***
+WeatherSc Snow                     -1.211e-01  2.849e-02   -4.251 2.13e-05 ***
+WeatherSd missing/other            -8.172e-02  9.796e-03   -8.342  < 2e-16 ***
+WeatherSe fog                      -5.566e-02  2.263e-02   -2.459 0.013924 *  
+RdTypeSb Other                     -1.527e-01  7.916e-03  -19.295  < 2e-16 ***
+X1RoadSb Other                      2.401e-01  1.218e-02   19.715  < 2e-16 ***
+X2RoadSb Major                     -6.733e-02  2.126e-02   -3.167 0.001538 ** 
+X2RoadSc Minor                     -7.094e-03  2.032e-02   -0.349 0.727004    
+SpecialCSb other                   -1.244e-01  1.106e-02  -11.241  < 2e-16 ***
+RoadSurfSb Wet                     -2.336e-03  4.924e-03   -0.475 0.635139    
+RoadSurfSc Snow                    -2.951e-01  3.327e-02   -8.870  < 2e-16 ***
+RoadSurfSd other / missing         -2.456e-01  1.266e-02  -19.403  < 2e-16 ***
+PedLocSb Carriageway DK            -8.405e-02  9.082e-03   -9.254  < 2e-16 ***
+PedLocSc Footpath                  -4.350e-01  1.524e-02  -28.534  < 2e-16 ***
+JdetailSb T Junc                   -8.465e-02  2.070e-02   -4.089 4.32e-05 ***
+JdetailSc other                    -1.321e-01  2.011e-02   -6.570 5.04e-11 ***
+JdetailSd slip rd                  -1.220e-01  2.592e-02   -4.708 2.50e-06 ***
+JdetailSe roundabout               -2.687e-01  2.242e-02  -11.984  < 2e-16 ***
+DvrSex2                            -1.185e-01  5.083e-03  -23.313  < 2e-16 ***
+DvrSex3                            -1.286e-01  1.530e-02   -8.408  < 2e-16 ***
+DvrAgeBdb 16-25                     5.483e-02  6.446e-03    8.507  < 2e-16 ***
+DvrAgeBdc 66+                      -7.385e-02  8.969e-03   -8.234  < 2e-16 ***
+DvrAgeBdd missing                  -1.305e-01  1.263e-02  -10.331  < 2e-16 ***
+JnyPurpSb school                   -1.558e-01  1.648e-02   -9.454  < 2e-16 ***
+JnyPurpSc other                     1.264e-01  4.591e-03   27.538  < 2e-16 ***
+TimeZoneCommute pm                  4.612e-02  1.404e-02    3.285 0.001019 ** 
+TimeZoneearly                       1.590e-01  1.368e-02   11.630  < 2e-16 ***
+TimeZoneevening                     8.423e-02  1.761e-02    4.783 1.72e-06 ***
+TimeZonelate                       -1.224e-03  2.224e-02   -0.055 0.956120    
+TimeZoneMiddle of day               7.993e-03  1.238e-02    0.645 0.518649    
+CosTim                             -3.245e-02  8.446e-03   -3.842 0.000122 ***
+Cos2Tim                            -1.154e-01  5.605e-03  -20.595  < 2e-16 ***
+SinTim                             -3.039e-01  1.051e-02  -28.915  < 2e-16 ***
+Sin2Tim                            -2.827e-02  4.570e-03   -6.185 6.21e-10 ***
+YearN                               2.908e-02  4.220e-03    6.892 5.52e-12 ***
+PFlabelAvon and Somerset            2.381e-03  6.353e-02    0.037 0.970095    
+PFlabelBedfordshire                -4.626e-02  4.207e-02   -1.099 0.271590    
+PFlabelCambridgeshire               1.718e-01  3.730e-02    4.605 4.12e-06 ***
+PFlabelCheshire                     4.065e-01  6.364e-02    6.387 1.70e-10 ***
+PFlabelCity of London              -4.934e-02  7.357e-02   -0.671 0.502410    
+PFlabelCleveland                    5.292e-01  6.709e-02    7.888 3.06e-15 ***
+PFlabelCumbria                      2.471e-01  4.187e-02    5.902 3.58e-09 ***
+PFlabelDerbyshire                   3.920e-01  6.379e-02    6.145 8.01e-10 ***
+PFlabelDevon and Cornwall          -1.563e-01  3.325e-02   -4.700 2.60e-06 ***
+PFlabelDorset                       4.493e-01  6.412e-02    7.007 2.44e-12 ***
+PFlabelDurham                       4.250e-01  4.545e-02    9.351  < 2e-16 ***
+PFlabelDyfed-Powys                  5.679e-01  6.459e-02    8.793  < 2e-16 ***
+PFlabelEssex                        5.791e-01  3.300e-02   17.547  < 2e-16 ***
+PFlabelGloucestershire              3.652e-01  4.374e-02    8.348  < 2e-16 ***
+PFlabelGreater Manchester           5.958e-01  5.480e-02   10.873  < 2e-16 ***
+PFlabelGwent                        7.305e-01  6.681e-02   10.933  < 2e-16 ***
+PFlabelHampshire                    6.989e-01  6.231e-02   11.216  < 2e-16 ***
+PFlabelHumberside                   2.286e-01  3.574e-02    6.397 1.58e-10 ***
+PFlabelKent                         1.033e-01  3.213e-02    3.214 0.001307 ** 
+PFlabelLancashire                   6.774e-01  3.730e-02   18.160  < 2e-16 ***
+PFlabelLeicestershire               2.831e-01  6.414e-02    4.414 1.02e-05 ***
+PFlabelLincolnshire                 3.610e-01  6.348e-02    5.686 1.30e-08 ***
+PFlabelMerseyside                   6.237e-01  6.316e-02    9.875  < 2e-16 ***
+PFlabelMetropolitan Police         -1.921e-01  2.830e-02   -6.787 1.14e-11 ***
+PFlabelNorfolk                      1.517e-01  3.767e-02    4.028 5.62e-05 ***
+PFlabelNorth Wales                  7.206e-01  6.466e-02   11.143  < 2e-16 ***
+PFlabelNorth Yorkshire              3.672e-01  6.370e-02    5.765 8.17e-09 ***
+PFlabelNorthamptonshire             8.736e-01  6.463e-02   13.518  < 2e-16 ***
+PFlabelNorthumbria                  3.844e-01  3.592e-02   10.701  < 2e-16 ***
+PFlabelNottinghamshire              4.602e-01  6.300e-02    7.305 2.78e-13 ***
+PFlabelPolice Scotland              9.455e-01  3.404e-02   27.774  < 2e-16 ***
+PFlabelSouth Wales                  5.092e-02  6.476e-02    0.786 0.431712    
+PFlabelSouth Yorkshire              6.268e-01  3.333e-02   18.809  < 2e-16 ***
+PFlabelStaffordshire                2.312e-02  3.936e-02    0.587 0.556891    
+PFlabelSuffolk                      7.476e-02  4.077e-02    1.833 0.066729 .  
+PFlabelSurrey                      -5.279e-02  3.084e-02   -1.712 0.086898 .  
+PFlabelSussex                       2.728e-01  3.709e-02    7.354 1.92e-13 ***
+PFlabelThames Valley                3.854e-01  6.248e-02    6.169 6.86e-10 ***
+PFlabelWarwickshire                 2.722e-01  3.961e-02    6.871 6.36e-12 ***
+PFlabelWest Mercia                  1.653e-01  3.591e-02    4.602 4.18e-06 ***
+PFlabelWest Midlands                1.305e-01  3.138e-02    4.158 3.21e-05 ***
+PFlabelWest Yorkshire               4.417e-01  4.852e-02    9.104  < 2e-16 ***
+PFlabelWiltshire                    2.977e-01  6.474e-02    4.598 4.26e-06 ***
+YearN2                              1.865e-03  8.479e-05   22.001  < 2e-16 ***
+POattend                           -6.591e-01  5.592e-03 -117.853  < 2e-16 ***
+VRefb second                       -1.623e-01  4.777e-03  -33.981  < 2e-16 ***
+VRefc other                        -4.035e-01  1.344e-02  -30.017  < 2e-16 ***
+CRefb second                       -1.121e-01  6.558e-03  -17.094  < 2e-16 ***
+CRefc other                        -1.691e-01  9.177e-03  -18.422  < 2e-16 ***
+Age_Band_of_Casualty-1             -1.506e-01  1.762e-02   -8.544  < 2e-16 ***
+Age_Band_of_Casualty1              -1.911e-01  1.489e-02  -12.835  < 2e-16 ***
+Age_Band_of_Casualty2              -2.225e-01  1.175e-02  -18.940  < 2e-16 ***
+Age_Band_of_Casualty3              -7.807e-02  8.922e-03   -8.749  < 2e-16 ***
+Age_Band_of_Casualty4              -2.008e-01  7.952e-03  -25.256  < 2e-16 ***
+Age_Band_of_Casualty5              -8.924e-02  8.082e-03  -11.041  < 2e-16 ***
+Age_Band_of_Casualty7               4.438e-02  6.478e-03    6.851 7.33e-12 ***
+Age_Band_of_Casualty8               9.548e-02  9.065e-03   10.533  < 2e-16 ***
+Age_Band_of_Casualty9               1.417e-01  1.458e-02    9.717  < 2e-16 ***
+Age_Band_of_Casualty10              2.532e-01  2.377e-02   10.652  < 2e-16 ***
+Age_Band_of_Casualty11              2.893e-01  3.573e-02    8.095 5.74e-16 ***
+CasAgeN2                            2.135e-04  1.053e-05   20.278  < 2e-16 ***
+Sex_of_Casualty2                   -6.070e-02  4.654e-03  -13.043  < 2e-16 ***
+Sex_of_Casualty3                   -8.196e-01  1.042e-01   -7.867 3.62e-15 ***
+NofVsGroupxx                       -2.375e-02  6.022e-03   -3.945 7.99e-05 ***
+NofVsGroupxxx+                      1.806e-01  8.250e-03   21.895  < 2e-16 ***
+NofCsGroupxx                        1.029e-01  5.849e-03   17.598  < 2e-16 ***
+NofCsGroupxxx+                      4.399e-01  7.331e-03   59.999  < 2e-16 ***
+online1                             7.995e-03  1.719e-02    0.465 0.641966    
+C_Ind1                              4.886e-01  5.542e-02    8.817  < 2e-16 ***
+C16SUMLABBus Occupant:YearN         2.444e-02  2.788e-03    8.764  < 2e-16 ***
+C16SUMLABHGV Occupant:YearN         3.420e-03  3.595e-03    0.951 0.341402    
+C16SUMLABMotor Cyclist:YearN        8.506e-03  9.330e-04    9.117  < 2e-16 ***
+C16SUMLABOther Veh Occupant:YearN   3.621e-02  3.340e-03   10.843  < 2e-16 ***
+C16SUMLABPedal Cyclist:YearN        1.893e-02  1.099e-03   17.221  < 2e-16 ***
+C16SUMLABPedestrian:YearN           4.723e-03  8.926e-04    5.291 1.21e-07 ***
+C16SUMLABVan Occupant:YearN        -1.394e-03  2.372e-03   -0.588 0.556774    
+YearN:PFlabelAvon and Somerset     -2.303e-02  4.716e-03   -4.884 1.04e-06 ***
+YearN:PFlabelBedfordshire           5.523e-03  6.918e-03    0.798 0.424631    
+YearN:PFlabelCambridgeshire         1.120e-03  5.913e-03    0.189 0.849778    
+YearN:PFlabelCheshire              -1.872e-02  4.762e-03   -3.932 8.44e-05 ***
+YearN:PFlabelCity of London         1.198e-02  1.271e-02    0.942 0.346032    
+YearN:PFlabelCleveland              2.591e-03  5.723e-03    0.453 0.650750    
+YearN:PFlabelCumbria               -3.068e-02  6.985e-03   -4.392 1.12e-05 ***
+YearN:PFlabelDerbyshire            -2.245e-03  4.827e-03   -0.465 0.641815    
+YearN:PFlabelDevon and Cornwall     4.590e-02  5.370e-03    8.547  < 2e-16 ***
+YearN:PFlabelDorset                -8.346e-04  4.992e-03   -0.167 0.867217    
+YearN:PFlabelDurham                 4.511e-02  7.203e-03    6.263 3.78e-10 ***
+YearN:PFlabelDyfed-Powys            9.327e-03  5.074e-03    1.838 0.066033 .  
+YearN:PFlabelEssex                 -2.315e-02  5.141e-03   -4.504 6.68e-06 ***
+YearN:PFlabelGloucestershire        7.344e-02  7.263e-03   10.111  < 2e-16 ***
+YearN:PFlabelGreater Manchester     3.284e-02  4.574e-03    7.179 7.02e-13 ***
+YearN:PFlabelGwent                  3.798e-02  5.742e-03    6.614 3.73e-11 ***
+YearN:PFlabelHampshire              2.247e-02  4.463e-03    5.034 4.79e-07 ***
+YearN:PFlabelHumberside            -3.618e-02  5.707e-03   -6.340 2.30e-10 ***
+YearN:PFlabelKent                  -1.871e-02  5.249e-03   -3.564 0.000366 ***
+YearN:PFlabelLancashire            -4.612e-03  4.726e-03   -0.976 0.329073    
+YearN:PFlabelLeicestershire         3.156e-02  5.025e-03    6.281 3.36e-10 ***
+YearN:PFlabelLincolnshire           3.301e-02  4.871e-03    6.777 1.22e-11 ***
+YearN:PFlabelMerseyside             1.063e-02  4.673e-03    2.275 0.022906 *  
+YearN:PFlabelMetropolitan Police   -7.049e-02  4.347e-03  -16.216  < 2e-16 ***
+YearN:PFlabelNorfolk                8.379e-03  6.075e-03    1.379 0.167844    
+YearN:PFlabelNorth Wales            5.347e-02  5.190e-03   10.302  < 2e-16 ***
+YearN:PFlabelNorth Yorkshire       -3.590e-02  4.765e-03   -7.534 4.92e-14 ***
+YearN:PFlabelNorthamptonshire      -2.894e-03  5.049e-03   -0.573 0.566496    
+YearN:PFlabelNorthumbria            1.521e-02  5.620e-03    2.705 0.006821 ** 
+YearN:PFlabelNottinghamshire       -1.926e-02  4.700e-03   -4.098 4.16e-05 ***
+YearN:PFlabelPolice Scotland       -2.864e-03  4.348e-03   -0.659 0.510101    
+YearN:PFlabelSouth Wales           -4.083e-03  5.070e-03   -0.805 0.420572    
+YearN:PFlabelSouth Yorkshire       -2.982e-02  5.645e-03   -5.283 1.27e-07 ***
+YearN:PFlabelStaffordshire         -1.306e-02  6.784e-03   -1.925 0.054211 .  
+YearN:PFlabelSuffolk               -9.426e-03  6.605e-03   -1.427 0.153555    
+YearN:PFlabelSurrey                 4.873e-02  5.935e-03    8.211  < 2e-16 ***
+YearN:PFlabelSussex                 2.003e-02  4.629e-03    4.326 1.52e-05 ***
+YearN:PFlabelThames Valley          1.040e-02  4.487e-03    2.317 0.020520 *  
+YearN:PFlabelWarwickshire          -2.838e-02  6.431e-03   -4.414 1.02e-05 ***
+YearN:PFlabelWest Mercia           -1.547e-02  5.860e-03   -2.640 0.008296 ** 
+YearN:PFlabelWest Midlands          1.581e-02  4.995e-03    3.166 0.001544 ** 
+YearN:PFlabelWest Yorkshire         1.417e-02  4.499e-03    3.150 0.001633 ** 
+YearN:PFlabelWiltshire             -1.382e-02  5.109e-03   -2.705 0.006834 ** 
+C_Ind0:PFCdiff2Bedfordshire         3.709e-01  8.306e-02    4.465 8.01e-06 ***
+C_Ind1:PFCdiff2Bedfordshire                NA         NA       NA       NA    
+C_Ind0:PFCdiff2Cambridgeshire       2.085e-01  7.390e-02    2.821 0.004785 ** 
+C_Ind1:PFCdiff2Cambridgeshire              NA         NA       NA       NA    
+C_Ind0:PFCdiff2City of London       2.024e-01  1.356e-01    1.492 0.135621    
+C_Ind1:PFCdiff2City of London              NA         NA       NA       NA    
+C_Ind0:PFCdiff2Cumbria             -1.899e-01  8.453e-02   -2.247 0.024663 *  
+C_Ind1:PFCdiff2Cumbria                     NA         NA       NA       NA    
+C_Ind0:PFCdiff2Devon and Cornwall   4.114e-01  6.734e-02    6.109 1.00e-09 ***
+C_Ind1:PFCdiff2Devon and Cornwall          NA         NA       NA       NA    
+C_Ind0:PFCdiff2Durham               1.257e-01  8.651e-02    1.453 0.146172    
+C_Ind1:PFCdiff2Durham                      NA         NA       NA       NA    
+C_Ind0:PFCdiff2Essex               -1.450e-01  6.637e-02   -2.185 0.028883 *  
+C_Ind1:PFCdiff2Essex                       NA         NA       NA       NA    
+C_Ind0:PFCdiff2Gloucestershire      5.416e-01  8.796e-02    6.157 7.43e-10 ***
+C_Ind1:PFCdiff2Gloucestershire             NA         NA       NA       NA    
+C_Ind0:PFCdiff2Greater Manchester  -1.224e-01  7.582e-02   -1.614 0.106504    
+ [ reached getOption("max.print") -- omitted 33 rows ]
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 2681676  on 3555511  degrees of freedom
+Residual deviance: 2300901  on 3555304  degrees of freedom
+AIC: 2301317
+
+Number of Fisher Scoring iterations: 6
+

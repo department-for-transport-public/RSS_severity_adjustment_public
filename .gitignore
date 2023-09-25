@@ -60,6 +60,13 @@ Outputs/
 *.doc
 *.pdf
 *.md
+
+#Model outputs (don't need to be shared further)
+glm.txt
+odds.txt
+odds2.txt
+
+
 ##Your readme is cool though
 !README.md
 
