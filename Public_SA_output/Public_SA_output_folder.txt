@@ -1,1 +1,1 @@
-This is the folder where the outputted files will be stored.
+This is the folder where the outputted files will be stored (can be changed by altering the file path in the R code).
