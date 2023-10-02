@@ -49,11 +49,11 @@ Outputs from the model (the adjusted probabilities) will change every time new d
 While the fundamental approach and model used does not change, additional of new data and CRASH forces may mean that it is not possible to exactly replicate severity adjustments which have been previously published by DfT.  If this is the aim, then further guidance can be sought via the contact details below. 
 
 
-## Summary and request for feedback 
+## Summary and contact info 
 
 This code has been published to allow users of road casualty data and statistics to understand the model used, and in interested, apply the method to their own data.  
 
-The road safety statistics team welcomes any feedback on the clarity or usefulness of the code,  or the model approach itself, this can be provided via email to roadacc.stats@dft.gov.uk.  
+The road safety statistics team welcomes any feedback on the clarity or usefulness of the code,  or the model approach itself, this can be provided via email to roadacc.stats@dft.gov.uk or Matthew.Tranter@dft.gov.uk. 
 
 
 
