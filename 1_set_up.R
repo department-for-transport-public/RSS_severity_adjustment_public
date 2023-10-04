@@ -19,25 +19,32 @@ library(car) #used in re-labelling variables (recode function) in data preparati
 
 ## Reading in data from website (filter for 2004 onwards)
 
-# These are links to the datasets on the data.gov.uk pages; the filenames may need to be updated as new datafiles are added 
-# (e.g. as additional years of data are added, the last year in the filename is likely to change)  
+# These are links to the datasets on the data.gov.uk pages
+# This reads in the full dataset to the latest published year; it may be necessary to filter out some years as desired.
 
 # Accident data
-AccDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-accident-1979-2021.csv") %>% 
+AccDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-1979-latest-published-year.csv") %>% 
   dplyr::filter(accident_year >= 2004)
 
 # Casualty data
-CasDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-1979-2021.csv") %>% 
+CasDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-1979-latest-published-year.csv") %>% 
   dplyr::filter(accident_year >= 2004)
 
+
 # Vehicle data
-VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-1979-2021.csv") %>% 
+VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-1979-latest-published-year.csv") %>% 
   dplyr::filter(accident_year >= 2004)
 
 
 ################################################################################
 
 ## Reading in road safety data CRASH data
+
+# Load the crash indicator data
+# This datafile provides details as whether the relevant force was on the CRASH system when/where the collision occurred
+# Note that although the Met police also uses an injury-based system (COPA, rather than CRASH), this is coded later 
+# The variable 'crash_indicator' is set to 1 for each record that was produced from an injury-based system. 
+# The file 'RSS_crash_records' has records only where 'crash_indicator' = 1 i.e. those records produced via CRASH
 
 # Specify a folder which will contain all the input data required 
 # This code assumes that input data will be loaded from flat files rather than (e.g.) directly from databases
@@ -47,14 +54,23 @@ folder <-
     fsep = "/"
   )
 
-# Load the crash indicator data
-# This datafile provides details as whether the relevant force was on the CRASH system when/where the collision occurred
-# Note that although the Met police also uses an injury-based system (COPA, rather than CRASH), this is coded later 
-# The variable 'crash_indicator' is set to 1 for each record that was produced from an injury-based system. 
-# The file 'RSS_crash_records' has records only where 'crash_indicator' = 1 i.e. those records produced via CRASH
-
 # Read in data set that has accident_index, vehicle_reference, casualty_reference and crash_indicator
 crash_indicator <- read.csv(paste(folder, "/RSS_crash_records.csv", sep=""))
+
+####
+
+# As an alternative, it is possible to read in the data from the casualty adjustment file included as part of the published open data
+# This file is the output from the DfT running of the model, but it includes a flag as to whether an injury based method was used 
+# So this could be used as an alternative to reading in the file as above 
+# Note that this is NOT used in the code below so that the filename would need to be amended in the join below 
+# That is, change crash_indicator to crash_indicator_open
+#
+# crash_indicator_open <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-adjustment-lookup_2004-latest-published-year.csv") %>% 
+#   dplyr::mutate(vehicle_reference = Vehicle_Reference, casualty_reference = Casualty_Reference, 
+#                 crash_indicator = injury_based) %>% 
+#   dplyr::filter(injury_based == 1 & injury_based_severity_code > 0) %>% #this removes the Met police which is coded later, and non-CRASH records
+#   dplyr::select(-Vehicle_Reference, -Casualty_Reference, -injury_based, -Adjusted_Serious, -Adjusted_Slight,
+#                 -injury_based_severity_code)
 
 
 ################################################################################ 
