@@ -1,0 +1,1 @@
+This is the folder where the inputted data files are stored (can be changed by altering the file path in the R code).

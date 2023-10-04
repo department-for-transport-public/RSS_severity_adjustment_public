@@ -39,10 +39,6 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-##Data and output folders
-Data/
-Outputs/
-
 # Common data filetypes
 *.xlsx
 *.xls
@@ -50,14 +46,30 @@ Outputs/
 *.ods
 .Rproj.user
 
+##Data folders (except csv files)
+!Data/
+#!Data/RSS_c8crash_data.csv
+!Data/Data_folder.txt
+Outputs/
+!Public_SA_output/Public_SA_output_folder.txt
+
+
 #Common output type
 *.html
 *.docx
 *.doc
 *.pdf
 *.md
+
+#Model outputs (don't need to be shared further)
+glm.txt
+odds.txt
+odds2.txt
+
+
 ##Your readme is cool though
 !README.md
+!security_check.md
 
 ##Common image types
 *.png

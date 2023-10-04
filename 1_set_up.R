@@ -1,76 +1,103 @@
 ################################################################################
-# STATS19 SERVERITY ADJUSTMENT: SETUP
+# STATS19 SEVERITY ADJUSTMENT: SETUP
 ################################################################################
 
 ## This initial script loads required libraries and specifies folder and file names where data files are located
 ## A number of pre-specified lookups are loaded in from web-based CSV files
 
 ################################################################################
+
 ## Libraries and setup
 
-library(DBI) #connect to SQL
-library(odbc) #connect to SQL
-library(dplyr) #data manipulation
-library(car) #used in re-labelling variables (recode function)
+library(data.table) #import data
 library(readr) #import data
-library(pROC) #for ROC curve (in analysis section)
-library(data.table)
+library(dplyr) #data manipulation
+library(car) #used in re-labelling variables (recode function) in data preparation script
 
 
 ################################################################################
+
 ## Reading in data from website (filter for 2004 onwards)
 
-#accident data
-AccDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-accident-1979-2021.csv") %>% 
+# These are links to the datasets on the data.gov.uk pages
+# This reads in the full dataset to the latest published year; it may be necessary to filter out some years as desired.
+
+# Accident data
+AccDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-1979-latest-published-year.csv") %>% 
   dplyr::filter(accident_year >= 2004)
 
-#casualty data
-CasDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-1979-2021.csv") %>% 
+# Casualty data
+CasDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-1979-latest-published-year.csv") %>% 
   dplyr::filter(accident_year >= 2004)
 
-#vehicle data
-VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-1979-2021.csv") %>% 
+
+# Vehicle data
+VehDB <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-1979-latest-published-year.csv") %>% 
   dplyr::filter(accident_year >= 2004)
 
 
 ################################################################################
-## Reading in road safety data
-## NOTE: Need to contact road safety stats team for C-Ind variable dataset - this requires requesting the c8crash variable 
 
-con <- DBI::dbConnect(odbc::odbc(), 
-                      .connection_string = "driver={ODBC Driver 17 for SQL Server};
-                             Trusted_Connection=yes;
-                             server=GCP-TS01; 
-                             database=RAS_Statistics")
+## Reading in road safety data CRASH data
 
-c8crash <- dbGetQuery(con,
-                      paste0("select
-                        [accident_index],[accyr],[accref],[vehref],[casref],[c8crash]
-                     FROM cas
-                     WHERE accyr between 2004 and 2021")) %>%
-  dplyr::mutate(C_Ind = ifelse(c8crash==-1 , 0, 1))
+# Load the crash indicator data
+# This datafile provides details as whether the relevant force was on the CRASH system when/where the collision occurred
+# Note that although the Met police also uses an injury-based system (COPA, rather than CRASH), this is coded later 
+# The variable 'crash_indicator' is set to 1 for each record that was produced from an injury-based system. 
+# The file 'RSS_crash_records' has records only where 'crash_indicator' = 1 i.e. those records produced via CRASH
 
-CasDB <- CasDB %>%
-  left_join(c8crash, by = c("accident_index", "vehicle_reference" = "vehref", "casualty_reference" = "casref"))
+# Specify a folder which will contain all the input data required 
+# This code assumes that input data will be loaded from flat files rather than (e.g.) directly from databases
+folder <- 
+  file.path(
+    "Data",
+    fsep = "/"
+  )
 
-################################################################################   
+# Read in data set that has accident_index, vehicle_reference, casualty_reference and crash_indicator
+crash_indicator <- read.csv(paste(folder, "/RSS_crash_records.csv", sep=""))
+
+####
+
+# As an alternative, it is possible to read in the data from the casualty adjustment file included as part of the published open data
+# This file is the output from the DfT running of the model, but it includes a flag as to whether an injury based method was used 
+# So this could be used as an alternative to reading in the file as above 
+# Note that this is NOT used in the code below so that the filename would need to be amended in the join below 
+# That is, change crash_indicator to crash_indicator_open
+#
+# crash_indicator_open <- data.table::fread("https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-adjustment-lookup_2004-latest-published-year.csv") %>% 
+#   dplyr::mutate(vehicle_reference = Vehicle_Reference, casualty_reference = Casualty_Reference, 
+#                 crash_indicator = injury_based) %>% 
+#   dplyr::filter(injury_based == 1 & injury_based_severity_code > 0) %>% #this removes the Met police which is coded later, and non-CRASH records
+#   dplyr::select(-Vehicle_Reference, -Casualty_Reference, -injury_based, -Adjusted_Serious, -Adjusted_Slight,
+#                 -injury_based_severity_code)
+
+
+################################################################################ 
 
 ## Combine datasets (to produce 'DB', the one master data file)
 
+# Add the crash indicator to the casualty data, and rename to C_Ind
+CasDB <- CasDB %>%
+  left_join(crash_indicator, by = c("accident_index", "vehicle_reference","casualty_reference")) %>% 
+  mutate(C_Ind = dplyr::case_when(crash_indicator == 1 ~ 1, TRUE ~ 0)) %>% 
+  select(-crash_indicator) #drop as no longer required after recode
+
+# Join accident and vehicle variables on to the casualty records
 DB <- CasDB %>%
   dplyr::left_join(AccDB, by = c("accident_reference", "accident_year")) %>%
   dplyr::left_join(VehDB, by =  c("accident_year", "vehicle_reference", "accident_reference")) 
-#rm(AccDB, CasDB, VehDB)
 
-################################################################################   
 
-## Data cleaning - misc.
+################################################################################ 
 
-# Make all NAs -1 like ONS method
+## Initial data cleaning
+## This section relabels and recodes variables into a format helpful for the later modelling and interpretation 
+
+# Make all NAs -1
 DB[is.na(DB)] <- -1
 
-
-# Rename variables so they are the same as ONS list - also easier to interpret than STATS19 naming
+# Rename variables to ease interpretation (this follows the approach adopted by ONS initially)
 DB <- DB %>%
   dplyr::select("accid" = "accident_index",
                 "accyr" = "accident_year",
@@ -109,7 +136,7 @@ DB <- DB %>%
                 'Vehicle_Reference' = 'vehicle_reference', 
                 'Casualty_Reference' = 'casualty_reference') %>% 
   mutate(`Police_Force` = case_when(`Police_Force` %in% c(91, 92, 93, 94, 95, 96, 97, 98) ~ 99, 
-                                    TRUE ~ `Police_Force`)) %>% 
+                                    TRUE ~ `Police_Force`)) %>% #recording for Scottish forces merging into Police Scotland
   mutate(`C16SUMLAB` = case_when(`Casualty_Type` == 0 ~ "Pedestrian",
                                  `Casualty_Type` == 1 ~ "Pedal Cyclist",
                                  `Casualty_Type` %in% c(2,3,4,5,23,97,103,104,105,106) ~ "Motor Cyclist",
@@ -165,26 +192,23 @@ DB <- DB %>%
                                `Police_Force` == 99 ~ "Police Scotland",
                                TRUE ~ "Unknown")) 
 
-## read in data set that has c8crash, accident_index, accident_year, vehicle_reference, casualty_reference
-
-## SPECIFY FOLDER 
-
-#Specify a folder which will contain all the input data required 
-#This code assumes that input data will be loaded from flat files rather than (e.g.) directly from databases
-
-folder_in <-  "~/g/AFP/RLTDAll/STS/007 ROAD SAFETY STATISTICS/002 PUBLICATION/0003 Reported Road Casualties Great Britain/RRCGB22/Severity_adjustment/Public_2021_run/"
-folder_out <- "~/g/AFP/RLTDAll/STS/007 ROAD SAFETY STATISTICS/002 PUBLICATION/0003 Reported Road Casualties Great Britain/RRCGB22/Severity_adjustment/Public_2021_run/"
-data_year <- 2021
 
 ################################################################################
 
+## Specify output folder
 
+# This is where the outputted data from the modelling will be saved 
+# Due to the large file sizes, for a full model run, this should be changed to a local folder rather than one within GitHub
 
-## SPECIFY DATA FILENAMES
+folder_out <- 
+  file.path(
+    "Public_SA_output",
+    fsep = "/"
+  )
 
-#These input files should all be located within the Data folder (unless otherwise specified)
-#Within this project, sample/dummy files have been loaded to show the format of the data - these should allow the code to run but will not produce meaningful results
+################################################################################   
 
-# cas_data <- paste0("Cas_2004_", data_year, ".csv")
-# acc_data <- paste0("Acc_2004_", data_year, ".csv") 
-# veh_data <- paste0("Veh_2004_", data_year, ".csv")
+## Clean environment
+
+rm(AccDB, VehDB, CasDB, crash_indicator)
+
